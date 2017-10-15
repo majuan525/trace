@@ -1,0 +1,73 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>socket.io</title>
+</head>
+<body>
+
+    <div id="chatroom" style="width: 400px;height: 300px;overflow:auto;border: 1px solid black">
+
+    </div>
+    <input type="text" name="sayinput" id="sayinput"><br/>
+    <input type="button" name="send" id="sendbutton" value="send">
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/socket.io/1.7.3/socket.io.js"></script>
+    <script type="text/javascript">
+
+        var iosocket = null;
+        window.onload=function () {
+            iosocket = io.connect('http://localhost:9000');
+
+            iosocket.on('connect',function () {
+//                iosocket.send('hello,客服端消息');
+            })
+
+            iosocket.on('message',function (msg) {
+                console.log(msg + "->message")
+                var chatroom = document.querySelector('#chatroom')
+                chatroom.innerHTML +=msg+"<br/>"
+            })
+
+            $("#sendbutton").click(function () {
+                iosocket.send($("#sayinput").val())
+            })
+        }
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

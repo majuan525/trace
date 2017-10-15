@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webSocket</title>
+</head>
+<body>
+
+    <div id="chatroom" style="width: 400px;height: 300px;overflow:auto;border: 1px solid black"></div>
+    <input type="text" name="sayinput" id="sayinput"><br/>
+    <input type="button" name="send" id="sendbutton" value="send">
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+    <script type="text/javascript" src="./socketClient.js"></script>
+    <script type="text/javascript">
+        $("#sendbutton").click(function () {
+            ws.send($("#sayinput").val())
+        })
+    </script>
+
+</body>
+</html>
